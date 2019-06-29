@@ -1,8 +1,8 @@
 import React from "react"
-
+import Tab from "@/components/views/Tab"
 function Home(){
     return (<div>
-        我是主页
+        <Tab/>
     </div>)
 }
 export default Home

@@ -1,0 +1,27 @@
+.navbar {
+    margin-bottom: 0;
+    z-index: 9;
+    width: 100%;
+    position: relative;
+    background: #444;
+    font-size: 13px;
+}
+.navbar .container {
+    height: 52px;
+    line-height: 52px;
+    display: flex;
+    font-size: 16px;
+    justify-content: space-between;
+}
+.navbar .brand {
+    width: 120px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .container span{
+    color: #fff;
+
+}

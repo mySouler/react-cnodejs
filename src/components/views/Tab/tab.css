@@ -1,0 +1,14 @@
+
+.tabBox{
+    min-height: 686px;
+    margin-top:26px;
+    margin-bottom:26px;
+    
+
+}
+.tabBox .ant-tabs{
+    width:80%;
+    margin:0 auto ;
+    padding: 20px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+}

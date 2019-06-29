@@ -31,3 +31,29 @@
     transform: rotate(360deg);
   }
 }
+
+*{
+  margin:0;
+  padding:0;
+}
+ul{
+  list-style: none
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+a{
+  color: #42b983
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+  min-width: 960px;
+  max-width: 1200px;
+}
