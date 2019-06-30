@@ -1,0 +1,44 @@
+
+
+.list{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-bottom:15px;
+}
+.list span{
+    display: block;
+    
+}
+.list span.photo{
+    flex: none;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 100%;
+
+}
+.count{
+    color: grey;
+    width:120px;
+}
+.count em:first-child {
+    color: #52c41a;
+}
+.tag{
+    padding-right: 20px
+}
+.title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+    flex: 1;
+    text-align: left;
+    
+}
+
+.time{
+    font-size:12px;
+    color: #000;
+}
