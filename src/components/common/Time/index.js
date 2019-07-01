@@ -8,7 +8,9 @@ export default ({timeStr}) => {
   
   return (
     <Fragment>
+      <strong>
       {time(timeStr)}
+      </strong>
     </Fragment> 
   )
 }

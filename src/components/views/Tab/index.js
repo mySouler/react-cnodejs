@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { Tabs } from "antd";
 import "./tab.css"
 import List from "@/components/views/List"
@@ -29,13 +29,10 @@ let initData = [
 
 ]
 export default () => {
-    
-    const [tabPosition,setTabPos] = useState("right")
-    
 
   return (
     <div className="container tabBox">
-      <Tabs tabPosition = { tabPosition }>
+      <Tabs tabPosition = {"right"}>
         {
             initData.map((item)=>{
                 return <TabPane tab={item.title} key={item.key}>

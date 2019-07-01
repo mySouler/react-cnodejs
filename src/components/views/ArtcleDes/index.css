@@ -1,0 +1,112 @@
+.artcleDes .container {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.left_panel {
+    width: 70%;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    padding: 20px;
+}
+.left_panel header{
+    text-align: center;
+}
+.left_panel header h2{
+    margin: 20px 0 10px;
+}
+.left_panel .topic h2{
+    font-weight:500;
+    margin: 25px 0 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #bbb;
+}
+.right_panel {
+    width: 28%
+}
+
+.right_panel .container {
+    min-width: inherit;
+}
+
+
+
+.topic {
+    
+    display: flex;
+    margin-bottom: 100px;
+}
+
+.topic .markdown-text {
+    width:100%
+}
+.reply {
+    width: 100%;
+}
+
+.reply img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.reply em{
+    float:right;
+}
+.reply  p  a{
+    margin: 0 8px;
+}
+.reply em img{
+    width:12px;
+    height: 12px;
+    color: #333;
+    border-radius: 0;
+    margin-right: 5px;
+    vertical-align: baseline;
+}
+.reply div{
+    width: 100%;
+
+}
+
+.reply>div>div {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ebedf0;
+    border-bottom-width: 0;
+    color: rgba(0, 0, 0, 0.65);
+    padding: 15px 20px;
+}
+
+.reply>div>div p {
+    margin: 0;
+    line-height: 26px;
+}
+
+.reply>div>div .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reply>div>div .info .thumbs {
+    width: 40px;
+    font-size: 15px;
+}
+
+.reply>div>div .info .thumbs img {
+    width: 12px;
+    height: 15px;
+    margin-right: 5px;
+    transform: rotate(-15deg);
+    position: relative;
+    top: -1px;
+}
+
+.reply>div:first-child {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.reply>div:last-child {
+    border-bottom: 1px solid #ebedf0;
+}

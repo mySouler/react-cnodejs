@@ -1,0 +1,11 @@
+
+.indexList .dynamic{
+    padding: 0;
+    box-shadow: none;
+    margin: 0
+}
+
+.indexList .dynamic .list span.photo{
+    width:50px;
+    height:50px;
+}

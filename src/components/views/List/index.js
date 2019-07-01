@@ -1,8 +1,8 @@
 
 import React,{useState,useEffect} from 'react'
-import "./list.css"
 import {getTopics} from "@/http/api"
 import Dynamic from "@/components/common/User/dynamic"
+import "./index.css"
 
 // import { Tag } from 'antd';
 // import tag from "./tabTag"
@@ -42,7 +42,7 @@ export default (props) => {
     },[limit, props, props.tab])
   return (
     <div>
-        <ul>
+        <ul className="indexList">
           <Dynamic listData={listData} />
         </ul>
     </div>

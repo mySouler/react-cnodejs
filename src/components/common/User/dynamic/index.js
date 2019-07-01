@@ -10,7 +10,7 @@ import Tag from "@/components/common/Tag"
 
 export default ({title='',listData,photo=true,count=true,tag=true,art=true,time=true}) => {
   return (
-    <div>
+    <div className="dynamic">
         {title?<h2>{title}</h2>:null}
         <ul>
             {

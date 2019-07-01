@@ -33,9 +33,11 @@ export default ({match}) => {
   },[match.params.id])
   return (
     <div className="container">
-      <Introduce {...userInfo} />
-      <Dynamic listData={userInfo.recent_topics} title={'最近创建的话题'} tag={false} count={false} />
-      <Dynamic listData={userInfo.recent_replies} title={'最近参与的话题'} tag={false} count={false} />
+      <div className="contentBox userInfo">
+        <Introduce {...userInfo} />
+        <Dynamic listData={userInfo.recent_topics} title={'最近创建的话题'} tag={false} count={false} />
+        <Dynamic listData={userInfo.recent_replies} title={'最近参与的话题'} tag={false} count={false} />
+      </div>
     </div>
   )
 }

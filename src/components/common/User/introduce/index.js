@@ -2,12 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import "./index.css"
 import Time from "@/components/common/Time"
-
+import "./index.css"
 
 export default (props) => {
     
   return (
-    <div>
+    <div className="introduce">
         <ul>
             <li>
                 
@@ -22,11 +22,11 @@ export default (props) => {
                 <span>积分：</span><strong>{props.score}</strong>
             </li>
             <li>
-                <span>Github:</span>
-                <a target="_blank" href={`https://github.com/${props.loginname}`} >{props.loginname}</a>
+                <span>Github：</span>
+                <a  rel="noopener" href={`https://github.com/${props.loginname}`} >{props.loginname}</a>
             </li>
             <li>
-                <span>注册时间:</span><Time  timeStr={props.create_at} ></Time>
+                <span>注册时间：</span><Time  timeStr={props.create_at} ></Time>
             </li>
         </ul>
     </div>

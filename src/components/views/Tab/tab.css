@@ -2,9 +2,6 @@
 .tabBox{
     min-height: 686px;
     margin-top:26px;
-    margin-bottom:26px;
-    
-
 }
 .tabBox .ant-tabs{
     width:80%;

@@ -1,0 +1,27 @@
+
+.introduce{
+    
+    text-align: left;
+    padding: 14px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+}
+.introduce ul li{
+    line-height: 32px;
+}
+.introduce ul li:first-child a span{
+    vertical-align: middle;
+    padding-left:20px;
+}
+.introduce ul li:first-child + li {
+    margin-top:15px;
+}
+.introduce ul li img{
+    width:60px;
+    height:60px;
+    border-radius:100%;
+    
+}
+.introduce ul li span,.introduce ul li a{
+    font-size:16px;
+
+}
