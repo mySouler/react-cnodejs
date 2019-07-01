@@ -3,7 +3,7 @@
     justify-content: space-between;
     text-align: left;
 }
-.artcleDes .container div{
+.artcleDes .container>div{
     height: fit-content;
 }
 .left_panel {
@@ -47,8 +47,10 @@
 }
 .topic .markdown-text  p{
     line-height: 28px;
-    text-indent: 2em;
     margin-top:14px;
+}
+.topic .markdown-text  p img{
+    width:100%;
 }
 .topic .markdown-text  strong{
     font-weight: bolder;

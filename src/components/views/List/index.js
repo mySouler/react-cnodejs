@@ -22,12 +22,12 @@ export default (props) => {
     const [limit,setLimit] = useState("")
     
     useEffect(()=>{
-        async function getList(){
+        async function getList(limit){
             if(props.tab !== "all"){
               setLimit(20)
             }
             try{
-              const data = await getTopics({...props,page:1,limit})
+              const data = await getTopics({...props,page:1,...limit})
               console.log(data)
               if(data.success){
                 setData(data.data)
@@ -39,7 +39,25 @@ export default (props) => {
         };
 
         getList();
-    },[limit, props, props.tab])
+        window.onscroll = function(){
+       		//变量scrollTop是滚动条滚动时，距离顶部的距离
+       		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+       		//变量windowHeight是可视区的高度
+       		var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+       		//变量scrollHeight是滚动条的总高度
+       		var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+
+          console.log(windowHeight,scrollTop,scrollHeight,"getList - hhhh--> err")
+
+           //滚动条到底部的条件
+          if( scrollHeight - (scrollTop + windowHeight) <= 10 ){
+            //写后台加载数据的函数
+            console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
+            // getList({limit:listData.length+20});
+          }   
+        }
+         
+    },[limit, listData.length, props, props.tab])
   return (
     <div>
         <ul className="indexList">
