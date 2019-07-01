@@ -6,7 +6,7 @@ import Dynamic from "@/components/common/User/dynamic"
 import { getUser_info } from '@/http/api';
 
 
-export default ({match}) => {
+export default ({match,photo=true,count=true,tag=true,art=true,time=true}) => {
   
   const [userInfo,setInfo] = useState({})
   useEffect(()=>{
@@ -35,8 +35,8 @@ export default ({match}) => {
     <div className="container">
       <div className="contentBox userInfo">
         <Introduce {...userInfo} />
-        <Dynamic listData={userInfo.recent_topics} title={'最近创建的话题'} tag={false} count={false} />
-        <Dynamic listData={userInfo.recent_replies} title={'最近参与的话题'} tag={false} count={false} />
+        <Dynamic listData={userInfo.recent_topics} title={'最近创建的话题'} tag={false} count={false}  photo={!photo?photo:true}  time={!time?time:true}/>
+        <Dynamic listData={userInfo.recent_replies} title={'最近参与的话题'} tag={false} count={false}   photo={!photo?photo:true}  time={!time?time:true} />
       </div>
     </div>
   )

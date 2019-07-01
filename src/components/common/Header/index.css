@@ -11,7 +11,7 @@
     line-height: 52px;
     display: flex;
     font-size: 16px;
-    justify-content: space-between;
+    justify-content: center;
 }
 .navbar .brand {
     width: 120px;

@@ -9,17 +9,15 @@ export default ({replies}) => {
 console.log("TCL: replies", replies)
   return (
     <div>
-
-    {replies&&replies.length? 
-        
-          replies.map((item,index)=>
-          <div key={index}>
-            <Author to={`/user/${item.author.loginname}`} imgUrl={item.author.avatar_url}></Author><div>
-              <p><span>{index+1}楼</span><Link to={`/user/${item.author.loginname}`} >{item.author.loginname}</Link> <Time  timeStr={item.create_at} ></Time> <em><img src={zan} alt=""/> {item.ups.length}</em> </p>
-              <p dangerouslySetInnerHTML={{__html:item.content}}></p></div>
-          </div>
-          )
-    :null}
+      {replies&&replies.length?<div className="discussCount"><span>{replies&&replies.length}</span>回复</div>:null}
+      {replies&&replies.length?replies.map((item,index)=>
+            <div key={index}>
+              <Author to={`/user/${item.author.loginname}`} imgUrl={item.author.avatar_url}></Author><div>
+                <p><span>{index+1}楼</span><Link to={`/user/${item.author.loginname}`} >{item.author.loginname}</Link> <Time  timeStr={item.create_at} ></Time> <em><img src={zan} alt=""/> {item.ups.length}</em> </p>
+                <p dangerouslySetInnerHTML={{__html:item.content}}></p></div>
+            </div>
+            )
+      :null}
 
     </div>
   )

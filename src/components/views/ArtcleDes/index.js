@@ -57,7 +57,7 @@ export default ({match})=> {
                 </div>
             </div>
             <div className="right_panel">
-                <UserInfo match={{params:{id:match.params.author}}} />
+                <UserInfo match={{params:{id:match.params.author}}} photo={false} time={false} />
             </div>
             </div>
         </div>

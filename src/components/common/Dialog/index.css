@@ -1,0 +1,22 @@
+
+
+.about{
+    position: fixed;
+    right: 50px;
+    bottom: 10%;
+    cursor: pointer;
+}
+.about img{
+    width: 100px;
+    height: 100px;
+}
+.myModal p{
+    line-height:26px;
+}
+.myModal ul {
+    padding-left:4em;
+}
+.myModal ul li{
+    
+    list-style: disc;
+}

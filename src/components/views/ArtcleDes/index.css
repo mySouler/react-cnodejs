@@ -3,7 +3,9 @@
     justify-content: space-between;
     text-align: left;
 }
-
+.artcleDes .container div{
+    height: fit-content;
+}
 .left_panel {
     width: 70%;
     box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
@@ -28,7 +30,9 @@
 .right_panel .container {
     min-width: inherit;
 }
-
+.right_panel .container .userInfo{
+    width: 100%;
+}
 
 
 .topic {
@@ -39,6 +43,15 @@
 
 .topic .markdown-text {
     width:100%
+
+}
+.topic .markdown-text  p{
+    line-height: 28px;
+    text-indent: 2em;
+    margin-top:14px;
+}
+.topic .markdown-text  strong{
+    font-weight: bolder;
 }
 .reply {
     width: 100%;
@@ -68,11 +81,17 @@
     width: 100%;
 
 }
+.reply .discussCount{
+    font-weight: bold;
+}
+.reply .discussCount span{
+    padding-right: 3px;
+}
 
 .reply>div>div {
     display: flex;
     align-items: center;
-    border: 1px solid #ebedf0;
+    border: 1px solid #bbb;
     border-bottom-width: 0;
     color: rgba(0, 0, 0, 0.65);
     padding: 15px 20px;
@@ -108,5 +127,5 @@
 }
 
 .reply>div:last-child {
-    border-bottom: 1px solid #ebedf0;
+    border-bottom: 1px solid #bbb;
 }

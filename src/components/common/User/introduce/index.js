@@ -11,7 +11,7 @@ export default (props) => {
         <ul>
             <li>
                 
-                <Link to={`/topic/${props.loginname}`}>
+                <Link to={`/user/${props.loginname}`}>
                     <img src={props.avatar_url} alt=""/>
                     <span>
                         {props.loginname}
@@ -23,7 +23,7 @@ export default (props) => {
             </li>
             <li>
                 <span>Github：</span>
-                <a  rel="noopener" href={`https://github.com/${props.loginname}`} >{props.loginname}</a>
+                <a   rel="nofollow me noopener noreferrer" target="_blank"  href={`https://github.com/${props.loginname}`} >{props.loginname}</a>
             </li>
             <li>
                 <span>注册时间：</span><Time  timeStr={props.create_at} ></Time>

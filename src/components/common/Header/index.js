@@ -5,11 +5,9 @@ function Header(){
     return (
         <header className="navbar">
             <div className="container">
-            <a className="brand" href="/">
-                <img src={logo} alt=""/>
-            </a>
-                
-                <span>按钮</span>
+                <a className="brand" href="/">
+                    <img src={logo} alt=""/>
+                </a>
             </div>
         </header>
     )
