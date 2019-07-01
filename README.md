@@ -25,11 +25,11 @@
 >
 >我是机缘巧合的情况下看到的，然后正好学完了hook就拿来练手了 当然我也借用了项目里面的一点代码 毕竟能偷懒就偷懒吗 ![img](file:///C:\Users\admin\AppData\Local\Temp\SGPicFaceTpBq\190968\0B9D517E.png)
 
-![1561969234947](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\1561969234947.png)
+![1561969234947](1561969234947.png)
 
 
 
-![1561969212386](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\1561969212386.png)
+![1561969212386](1561969212386.png)
 
 #### 本地运行：
 
