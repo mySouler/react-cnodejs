@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/history
+/.history
 /.pnp
 .pnp.js
 
