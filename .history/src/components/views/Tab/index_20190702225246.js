@@ -4,7 +4,6 @@ import { Tabs } from "antd";
 import "./tab.css"
 import List from "@/components/views/List"
 import {getTopics} from "@/http/api"
-import useLimit from "./limit"
 
 
 
@@ -36,12 +35,11 @@ export default () => {
   
     const [activeTab,setTab] = useState("all")
     const [listData,setData] = useState([])
-    // const [len,setLen] = useState('')
+    const [len,setLen] = useState('')
     const [canScroll,setScroll] = useState(0)
-    const changeLimit = useLimit
-    const tabCalBback = (key)=>{
-      console.log("TCL: tabCalBback -> keu", key)
-      setTab(key)
+    const tabCalBback = (keu)=>{
+    console.log("TCL: tabCalBback -> keu", keu)
+
     }
     useEffect(()=>{
         console.log(1,'cccctt')
@@ -54,8 +52,7 @@ export default () => {
                 
                 setData(data.data)
                 if(data.data){
-                  // changeLimit(data.data.length)
-                  // setLen(limit()data.data.length)
+                  setLen(data.data.length)
                 }
               }
             }catch(err){
@@ -64,7 +61,7 @@ export default () => {
             
         };
         
-        getList({tab:activeTab,page:1,limit:''});
+        getList({tab:activeTab,page:1,limit:len});
         
         
         const handleScroll = () => {
@@ -78,8 +75,7 @@ export default () => {
                //滚动条到底部的条件
               if( scrollHeight - (scrollTop + windowHeight) <= 10  ){
                 setScroll(Math.random())
-                // changeLimit(changeLimit()+20)
-                // setLen((data)=>data+20)
+                setLen((data)=>data+20)
                 console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
               }   
         }
@@ -87,10 +83,10 @@ export default () => {
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[activeTab])
+    },[canScroll,activeTab])
   return (
     <div className="container tabBox">
-      <Tabs onTabClick={tabCalBback} activeKey={activeTab} tabPosition = {"right"}>
+      <Tabs onTabClick={()=>tabCalBback} activeKey={activeTab} tabPosition = {"right"}>
         {
             initData.map((item,index)=>{
                 return <TabPane tab={item.title} key={item.key}>

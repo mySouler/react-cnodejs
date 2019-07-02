@@ -87,7 +87,7 @@ export default () => {
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[activeTab])
+    },[canScroll,activeTab])
   return (
     <div className="container tabBox">
       <Tabs onTabClick={tabCalBback} activeKey={activeTab} tabPosition = {"right"}>

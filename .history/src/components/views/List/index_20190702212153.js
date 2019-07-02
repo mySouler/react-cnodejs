@@ -1,48 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React,{useState,useEffect}  from "react";
-import { Tabs } from "antd";
-import "./tab.css"
-import List from "@/components/views/List"
+
+import React,{useState,useEffect} from 'react'
 import {getTopics} from "@/http/api"
-import useLimit from "./limit"
+import Dynamic from "@/components/common/User/dynamic"
+import "./index.css"
+
+// import { Tag } from 'antd';
+// import tag from "./tabTag"
+// import Alink from "@/components/common/List"
+// import Time from "@/components/common/Time"
+// import Author from "@/components/common/User/author"
+// import {Link} from 'react-router-dom'
 
 
 
-const { TabPane } = Tabs;
-let initData = [
-    {
-        title:"全部",
-        key:"all",
-    },
-    {
-        title:"精华",
-        key:"good",
-    },
-    {
-        title:"分享",
-        key:"share",
-    },
-    {
-        title:"问答",
-        key:"ask",
-    },
-    {
-        title:"工作",
-        key:"job",
-    },
 
-]
-export default () => {
-  
-    const [activeTab,setTab] = useState("all")
+
+
+export default ({tab}) => {
+  console.log(tab)
     const [listData,setData] = useState([])
-    // const [len,setLen] = useState('')
+    const [len,setLen] = useState('')
     const [canScroll,setScroll] = useState(0)
-    const changeLimit = useLimit
-    const tabCalBback = (key)=>{
-      console.log("TCL: tabCalBback -> keu", key)
-      setTab(key)
-    }
     useEffect(()=>{
         console.log(1,'cccctt')
         async function getList(params){
@@ -54,8 +33,7 @@ export default () => {
                 
                 setData(data.data)
                 if(data.data){
-                  // changeLimit(data.data.length)
-                  // setLen(limit()data.data.length)
+                  setLen(data.data.length)
                 }
               }
             }catch(err){
@@ -64,7 +42,7 @@ export default () => {
             
         };
         
-        getList({tab:activeTab,page:1,limit:''});
+        getList({tab,page:1,limit:len});
         
         
         const handleScroll = () => {
@@ -78,8 +56,7 @@ export default () => {
                //滚动条到底部的条件
               if( scrollHeight - (scrollTop + windowHeight) <= 10  ){
                 setScroll(Math.random())
-                // changeLimit(changeLimit()+20)
-                // setLen((data)=>data+20)
+                setLen((data)=>data+20)
                 console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
               }   
         }
@@ -87,18 +64,10 @@ export default () => {
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[activeTab])
+    },[canScroll])
   return (
-    <div className="container tabBox">
-      <Tabs onTabClick={tabCalBback} activeKey={activeTab} tabPosition = {"right"}>
-        {
-            initData.map((item,index)=>{
-                return <TabPane tab={item.title} key={item.key}>
-                            <List listData={listData}/>
-                        </TabPane>
-            })
-        }
-      </Tabs>
+    <div  className="indexList">
+          <Dynamic listData={listData} />
     </div>
-  );
-};
+  )
+}
