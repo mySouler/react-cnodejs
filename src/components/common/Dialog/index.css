@@ -5,6 +5,7 @@
     right: 50px;
     bottom: 10%;
     cursor: pointer;
+    z-index: 100;
 }
 .about img{
     width: 100px;

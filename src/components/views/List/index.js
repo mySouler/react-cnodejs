@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import React,{useState,useEffect} from 'react'
 import {getTopics} from "@/http/api"
@@ -20,12 +21,11 @@ export default (props) => {
   console.log(props)
     const [listData,setData] = useState([])
     const [limit,setLimit] = useState("")
+    const [canScroll,setScroll] = useState(true)
     
     useEffect(()=>{
         async function getList(limit){
-            if(props.tab !== "all"){
-              setLimit(20)
-            }
+            
             try{
               const data = await getTopics({...props,page:1,...limit})
               console.log(data)
@@ -37,8 +37,12 @@ export default (props) => {
             }
             
         };
-        getList();
+        if(canScroll){
+          getList();
+        }
+        
         const handleScroll = () => {
+              console.log("TCL: handleScroll -> listData.length", listData.length)
             	//变量scrollTop是滚动条滚动时，距离顶部的距离
            		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
            		//变量windowHeight是可视区的高度
@@ -47,7 +51,8 @@ export default (props) => {
            		var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
               console.log(windowHeight,scrollTop,scrollHeight,"getList - hhhh--> err")
                //滚动条到底部的条件
-              if( scrollHeight - (scrollTop + windowHeight) <= 10 ){
+              if( scrollHeight - (scrollTop + windowHeight) <= 10  ){
+                setScroll(false)
                 //写后台加载数据的函数
                 console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
                 getList({limit:listData.length+20});
@@ -57,7 +62,7 @@ export default (props) => {
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[props])
+    },[canScroll])
   return (
     <div>
         <ul className="indexList">
