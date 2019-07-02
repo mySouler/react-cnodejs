@@ -17,11 +17,12 @@ import "./index.css"
 
 
 
-export default ({tab}) => {
-  console.log(tab)
+export default (props) => {
+  console.log(props)
     const [listData,setData] = useState([])
     const [len,setLen] = useState('')
     const [canScroll,setScroll] = useState(0)
+    let open = true
     useEffect(()=>{
         console.log(1,'cccctt')
         async function getList(params){
@@ -35,6 +36,7 @@ export default ({tab}) => {
                 if(data.data){
                   setLen(data.data.length)
                 }
+                open = true
               }
             }catch(err){
               console.log(err,"getList ---> err")
@@ -42,7 +44,7 @@ export default ({tab}) => {
             
         };
         
-        getList({tab,page:1,limit:len});
+        getList({...props,page:1,limit:len});
         
         
         const handleScroll = () => {
@@ -54,9 +56,10 @@ export default ({tab}) => {
            		//变量scrollHeight是滚动条的总高度
            		var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
                //滚动条到底部的条件
-              if( scrollHeight - (scrollTop + windowHeight) <= 10  ){
+              if( scrollHeight - (scrollTop + windowHeight) <= 10 && open ){
                 setScroll(Math.random())
                 setLen((data)=>data+20)
+                open = false
                 console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
               }   
         }
@@ -64,7 +67,7 @@ export default ({tab}) => {
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[tab])
+    },[canScroll,props])
   return (
     <div>
         <ul className="indexList">

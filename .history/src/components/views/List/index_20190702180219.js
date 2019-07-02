@@ -17,8 +17,8 @@ import "./index.css"
 
 
 
-export default ({tab}) => {
-  console.log(tab)
+export default (props) => {
+  console.log(props)
     const [listData,setData] = useState([])
     const [len,setLen] = useState('')
     const [canScroll,setScroll] = useState(0)
@@ -42,7 +42,7 @@ export default ({tab}) => {
             
         };
         
-        getList({tab,page:1,limit:len});
+        getList({...props,page:1,limit:len});
         
         
         const handleScroll = () => {
@@ -64,7 +64,7 @@ export default ({tab}) => {
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[tab])
+    },[canScroll,props])
   return (
     <div>
         <ul className="indexList">

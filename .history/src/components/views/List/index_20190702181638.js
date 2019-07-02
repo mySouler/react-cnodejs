@@ -64,7 +64,7 @@ export default ({tab}) => {
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[tab])
+    },[canScroll])
   return (
     <div>
         <ul className="indexList">

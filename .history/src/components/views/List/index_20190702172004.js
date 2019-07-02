@@ -17,33 +17,34 @@ import "./index.css"
 
 
 
-export default ({tab}) => {
-  console.log(tab)
+export default (props) => {
+  console.log(props)
     const [listData,setData] = useState([])
-    const [len,setLen] = useState('')
-    const [canScroll,setScroll] = useState(0)
+    const [canScroll,setScroll] = useState(true)
+    const [canGet,setCanGet] = useState(true)
+    let len = listData.length
+    console.log("TCL: handleScroll -> listData.length", len)
+  
     useEffect(()=>{
         console.log(1,'cccctt')
-        async function getList(params){
+        async function getList(limit){
             
             try{
-              const data = await getTopics(params)
+              const data = await getTopics({...props,page:1,...limit})
               console.log(data)
               if(data.success){
-                
                 setData(data.data)
-                if(data.data){
-                  setLen(data.data.length)
-                }
+                
               }
+              setCanGet(true)
             }catch(err){
               console.log(err,"getList ---> err")
             }
             
         };
-        
-        getList({tab,page:1,limit:len});
-        
+        if(canScroll){
+          getList();
+        }
         
         const handleScroll = () => {
               
@@ -54,17 +55,19 @@ export default ({tab}) => {
            		//变量scrollHeight是滚动条的总高度
            		var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
                //滚动条到底部的条件
-              if( scrollHeight - (scrollTop + windowHeight) <= 10  ){
-                setScroll(Math.random())
-                setLen((data)=>data+20)
+              if( scrollHeight - (scrollTop + windowHeight) <= 10 && canGet ){
+                setScroll(false)
+                //写后台加载数据的函数
                 console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
+                setCanGet(false)
+                getList({limit:len+20});
               }   
         }
         window.addEventListener("scroll", handleScroll);
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[tab])
+    },[])
   return (
     <div>
         <ul className="indexList">
