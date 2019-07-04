@@ -39,6 +39,8 @@ export default () => {
     // const [len,setLen] = useState('')
     const [canScroll,setScroll] = useState(0)
     const changeLimit = useLimit
+    console.log("TCL: tabCalBback -> changeLimit", changeLimit(3))
+
     const tabCalBback = (key)=>{
       console.log("TCL: tabCalBback -> keu", key)
       setTab(key)
@@ -54,8 +56,7 @@ export default () => {
                 
                 setData(data.data)
                 if(data.data){
-                  // changeLimit(data.data.length)
-                  // setLen(limit()data.data.length)
+                  changeLimit(data.data.length)
                 }
               }
             }catch(err){
@@ -78,8 +79,7 @@ export default () => {
                //滚动条到底部的条件
               if( scrollHeight - (scrollTop + windowHeight) <= 10  ){
                 setScroll(Math.random())
-                // changeLimit(changeLimit()+20)
-                // setLen((data)=>data+20)
+                changeLimit(changeLimit()+20)
                 console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
               }   
         }
@@ -87,7 +87,7 @@ export default () => {
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
-    },[activeTab])
+    },[activeTab,canScroll])
   return (
     <div className="container tabBox">
       <Tabs onTabClick={tabCalBback} activeKey={activeTab} tabPosition = {"right"}>
