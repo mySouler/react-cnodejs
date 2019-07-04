@@ -3,7 +3,6 @@ import React,{useState,useEffect}  from "react";
 import { Tabs } from "antd";
 import "./tab.css"
 import List from "@/components/views/List"
-import {getTopics} from "@/http/api"
 import useLimit from "./limit"
 
 
@@ -35,61 +34,19 @@ let initData = [
 export default () => {
   
     const [activeTab,setTab] = useState("all")
-    const [listData,setData] = useState([])
-    // const [len,setLen] = useState('')
-    const [canScroll,setScroll] = useState(0)
-    const changeLimit = useLimit
-    console.log("TCL: tabCalBback -> changeLimit", changeLimit(3))
-
+    const listData  =  useLimit(activeTab)
     const tabCalBback = (key)=>{
       console.log("TCL: tabCalBback -> keu", key)
       setTab(key)
     }
     useEffect(()=>{
-        console.log(1,'cccctt')
-        async function getList(params){
-            
-            try{
-              const data = await getTopics(params)
-              console.log(data)
-              if(data.success){
-                
-                setData(data.data)
-                if(data.data){
-                  changeLimit(data.data.length)
-                }
-              }
-            }catch(err){
-              console.log(err,"getList ---> err")
-            }
-            
-        };
-        
-        getList({tab:activeTab,page:1,limit:''});
-        
-        
-        const handleScroll = () => {
-              
-            	//变量scrollTop是滚动条滚动时，距离顶部的距离
-           		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
-           		//变量windowHeight是可视区的高度
-           		var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
-           		//变量scrollHeight是滚动条的总高度
-           		var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
-               //滚动条到底部的条件
-              if( scrollHeight - (scrollTop + windowHeight) <= 10  ){
-                setScroll(Math.random())
-                changeLimit(changeLimit()+20)
-                console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
-              }   
-        }
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-    },[activeTab,canScroll])
+      console.log(1)
+
+    },[activeTab])
+  
   return (
     <div className="container tabBox">
+      {activeTab}
       <Tabs onTabClick={tabCalBback} activeKey={activeTab} tabPosition = {"right"}>
         {
             initData.map((item,index)=>{
