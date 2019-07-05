@@ -3,6 +3,7 @@ import React,{useState,useEffect}  from "react";
 import { Tabs } from "antd";
 import "./tab.css"
 import List from "@/components/views/List"
+import {getTopics} from "@/http/api"
 import useLimit from "./limit"
 
 
@@ -33,21 +34,23 @@ let initData = [
 ]
 export default () => {
   
-    const [activeTab,setTab] = useState("all")
-    const listData  =  useLimit(activeTab)
+    const [tab,setTab] = useState("all")
     const tabCalBback = (key)=>{
-      console.log("TCL: tabCalBback -> keu", key)
       setTab(key)
     }
-    useEffect(()=>{
-      console.log(1)
-
-    },[activeTab])
-  
+    // const { response = [] } = useLimit(getTopics, {
+    //   tab
+    // });
+    const { response = [] } = useLimit({
+      tab
+    });
+    console.log(response,'response')
+    const listData  = response || [];
+    
+    
   return (
     <div className="container tabBox">
-      {activeTab}
-      <Tabs onTabClick={tabCalBback} activeKey={activeTab} tabPosition = {"right"}>
+      <Tabs onTabClick={tabCalBback} activeKey={tab} tabPosition = {"right"}>
         {
             initData.map((item,index)=>{
                 return <TabPane tab={item.title} key={item.key}>

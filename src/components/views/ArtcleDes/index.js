@@ -8,9 +8,6 @@ import Tag from "@/components/common/Tag"
 import "./index.css"
 
 
-console.log('objecdddddd=========t')
-
-
 export default ({match})=> {
     console.log('object', match.params)
     const [artcleData,setArtcle] = useState({})

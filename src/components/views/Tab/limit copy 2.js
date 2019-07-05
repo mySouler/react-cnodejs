@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef,useCallback } from "react";
-
-import {getTopics} from "@/http/api"
+import { isEqual } from 'lodash'
 
 
 
@@ -34,15 +33,32 @@ const useBottom = ({action,arg}) => {
 
 
 
-const useLimit = (tab) => {
-    console.log(tab,'params')
+const useLimit = (service, params) => {
+    console.log(params,'params')
     const prevParams = useRef(null)
-    const [response, setResponse] = useState([]);
+    const [callback, { response }] = useServiceCallback(service)
+    console.log(prevParams.current,'params1')
     useEffect(() => {
+        if (!isEqual(prevParams.current, params)) {
+            prevParams.current = params
+            console.log(prevParams.current,'params2')
+            callback(params)
+        }
+    })
+
+    return {  response }
+};
+
+const useServiceCallback = service => {
+ 
+    const [response, setResponse] = useState([]);
+    const callback = useCallback(
+    params => {
+        
         async function getList(params) {
             console.log(params,'params')
             try {
-                const data = await getTopics(params);
+                const data = await service(params);
                 if(data.success){
                     setResponse(data.data);
                 }else{
@@ -52,17 +68,9 @@ const useLimit = (tab) => {
                 
             }
         }
-        if (!(prevParams.current === tab.tab)) {
-            prevParams.current = tab.tab
-            
-            getList(tab)
-        }
-        
-    },[tab])
-
-    return {  response }
+        return getList(params)
+    },[ service]);
+    return [callback,{response}];
 };
-
-
 
 export default useLimit;

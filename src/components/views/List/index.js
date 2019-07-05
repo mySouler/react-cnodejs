@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React,{useState,useEffect} from 'react'
-import {getTopics} from "@/http/api"
+import React from 'react'
 import Dynamic from "@/components/common/User/dynamic"
 import "./index.css"
 
