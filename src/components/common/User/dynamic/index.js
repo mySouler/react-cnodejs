@@ -36,8 +36,6 @@ export default ({title='',listData,photo=true,count=true,tag=true,art=true,time=
                     </li>
                 )
             }
-            
-           
         </ul>
     </div>
   )
